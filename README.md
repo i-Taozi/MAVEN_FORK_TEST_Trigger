@@ -1,75 +1,82 @@
-# [OrangeSignal CSV](http://orangesignal.github.io/orangesignal-csv/) [![Build Status](https://travis-ci.org/orangesignal/orangesignal-csv.png?branch=master)](https://travis-ci.org/orangesignal/orangesignal-csv)
+[![Build Status](https://travis-ci.org/extjwnl/extjwnl.png?branch=master)](https://travis-ci.org/extjwnl/extjwnl)
 
-OrangeSignal CSV is a very flexible csv (comma-separated values) read and write library for Java.  
+# About
 
-The binary distributions includes the following third party software:  
-[jLHA (LHA Library for Java)](http://homepage1.nifty.com/dangan/en/Content/Program/Java/jLHA/jLHA.html).
+extJWNL (Extended Java WordNet Library) is a Java API for creating, reading and updating dictionaries in WordNet format. extJWNL supports:
+* writing dictionaries
+* encodings (including UTF-8)
+* Java generics
+* huge dictionaries
+* instance dictionaries
+* Maven support
+* documentation improvements
+* improved unit test coverage
+* enhanced database support
+* simplified configuration
+* multiple other improvements and fixes
 
-## Prerequisites
+# Getting started
 
-* Java 1.6+  
-OrangeSignal CSV is compiled for Java 1.6
-
-## Installation
-
-### Maven users
-
-If you are using Maven, simply copy the following dependency into your pom.xml file. The artifact is hosted at [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Corangesignal-csv), and is standalone (no dependencies).
+In the pom.xml:
 
 ```xml
+<!-- main library dependency -->
 <dependency>
-    <groupId>com.orangesignal</groupId>
-    <artifactId>orangesignal-csv</artifactId>
-    <version>2.2.1</version>
+    <groupId>net.sf.extjwnl</groupId>
+    <artifactId>extjwnl</artifactId>
+    <version>2.0.5</version>
+</dependency>
+<!-- Princeton WordNet 3.1 data dependency -->
+<dependency>
+    <groupId>net.sf.extjwnl</groupId>
+    <artifactId>extjwnl-data-wn31</artifactId>
+    <version>1.2</version>
 </dependency>
 ```
 
-## Examples
-
-CSV entity class
+In the code:
 
 ```java
-@CsvEntity(header = true)
-public class Customer {
-
-    @CsvColumn(name = "name")
-    public String name;
-
-    @CsvColumn(name = "age")
-    public Integer age;
-
-}
+Dictionary d = Dictionary.getDefaultResourceInstance();
 ```
 
-example code
+extJWNL contains [Examples.java](utilities/src/main/java/net/sf/extjwnl/utilities/Examples.java) with examples of API use.
+
+# WordNet Data Dependencies
+extJWNL can load WordNet data from resources on the classpath.
+One way to do that is to add a dependency like illustrated above. 
+There are several dependencies available that contain data from Princeton WordNet:
+ * [extjwnl-data-wn21](https://github.com/extjwnl/extjwnl-data-wn21) WordNet 2.1 Unix version (text)
+ * [extjwnl-data-wn30](https://github.com/extjwnl/extjwnl-data-wn30) WordNet 3.0 Unix version (text)
+ * [extjwnl-data-wn31](https://github.com/extjwnl/extjwnl-data-wn31) WordNet 3.1 Unix version (text)
+ * [extjwnl-data-wn31-map](https://github.com/extjwnl/extjwnl-data-wn31-map) WordNet 3.1 Unix version (serialized)
+ * [extjwnl-data-mcr30](https://github.com/extjwnl/extjwnl-data-mcr30) Multilingual Central Repository 3.0 Unix version (text): 2016 release; currently only the Spanish portion
+
+WordNet dependencies with text data contain original Princeton WordNet files augmented with extJWNL configuration file.
+Multilingual Central Repository (MCR) dependencies contain extJWNL-compatible versions of MCR files augmented with extJWNL configuration file, generated exceptional forms, and inter-language index files.
+Dependencies with serialized data contain Princeton WordNet files serialized into HashMaps 
+and augmented with extJWNL configuration file.
+
+Serialized data is larger, but might work faster for some use cases. 
+
+If you use ```Dictionary.getDefaultResourceInstance()```, then make sure you use only one dependency.  
+
+# Acknowledgements
+
+![YourKit logo](https://www.yourkit.com/images/yklogo.png)
+
+extJWNL is supported by YourKit Open Source License. YourKit, LLC is the creator of
+[YourKit Java Profiler](https://www.yourkit.com/java/profiler/index.jsp)
+and [YourKit .NET Profiler](https://www.yourkit.com/.net/profiler/index.jsp),
+innovative and intelligent tools for profiling Java and .NET applications.
 
 
-```java
-CsvConfig cfg = new CsvConfig(',', '"', '"');
-cfg.setNullString("NULL");
-cfg.setIgnoreLeadingWhitespaces(true);
-cfg.setIgnoreTrailingWhitespaces(true);
-cfg.setIgnoreEmptyLines(true);
-cfg.setIgnoreLinePatterns(Pattern.compile("^#.*$"));
-cfg.setVariableColumns(false);
+# Resources
 
-List<Customer> list = new CsvEntityManager()
-    .config(cfg)
-    .load(Customer.class)
-    .filter(new SimpleBeanFilter().in("name", "Smith", "Johnson").gt("age", 21))
-    .offset(10)
-    .limit(1000)
-    .order(BeanOrder.desc("age"))
-    .from(reader);
-```
-
-## How to use
-
-* [User guide](http://orangesignal.github.io/orangesignal-csv/userguide.html)
-* [Migration](http://orangesignal.github.io/orangesignal-csv/migration.html)
-
-Sorry, it is japanese only for now.
-
-## License
-
-* Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+* [Homepage](http://extjwnl.sourceforge.net)
+* [Download](http://sourceforge.net/projects/extjwnl/files)
+* [Documentation Wiki](https://github.com/extjwnl/extjwnl/wiki)
+* [Mailing Lists](http://lists.sourceforge.net/lists/listinfo/extjwnl-announce)
+* [Forums](http://sourceforge.net/projects/extjwnl/forums/)
+* [RSS News Feed](http://sourceforge.net/export/rss2_projnews.php?group_id=386458)
+* [Issues](https://github.com/extjwnl/extjwnl/issues)
