@@ -1,192 +1,197 @@
-Version 4.0.0 - Jan 31, 2021
+2021-01-31 - Version 5.0.0
 - Java 8 target
-- Support for multi-value properties
-- New background property API
-- Some parser fixes
+- Reworked API (see the demos)
+- Layout computation rewritten to floating point
+- Reworked rendering infrastructure
 
-Version 3.5 - Nov 1, 2019
-- Fixed processing of counter-related properties
+2019-11-01 - Version 4.17
+- Added support for CSS counters
+- Text decoration propagation fixes
 
-Version 3.4 - Oct 30, 2019
-- More efficient logging
-- Fixed named color value creation
+2019-09-28 - Version 4.16
+- minor API extenstion (allow angle evalutaion in degrees)
 
-Version 3.3 - May 24, 2019
-- New typed representation of CSS functions
-- Added missing grid and flexbox properties and functions
-- Keyframes support added
-- Animations and transitions support
-- Many parser fixes (at-rules, vendor prefixes, bracketed identifiers, ...)
+2019-05-24 - Version 4.15
+- text-align: center support
+- word-spacing and letter-spacing support
+- SVG rendering improvements (markers, spacing, font style)
 
-Version 3.2 - Jan 29, 2018
-- Improved font-face rule support
-- Unknown pseudo classes are correctly skipped
+2018-01-30 - Version 4.14
+- Viewport background fix
+- Configurable ContentObserver for tracking image loading
+- Configurable image cache
+- Basic font-face support
 
-Version 3.1 - Oct 13, 2017
-- Removed java.awt bindings for better compatibility with Android (and other platforms)
+2017-09-07 - Version 4.13
+- Several layout computation fixes
+- Table width computation fixes
+- White space collapsing fixes
+- calc() evaluation support
+- Basic box-sizing support
+- Ported to jStyleParser 3
 
-Version 3.0 - Sep 7, 2017
-- Default value processing: initial and unset
-- Color processing changes: currentColor support
-- Correct overflow-x and overflow-y handling
-- Calculated values: calc() function support
-- box-sizing property support
-- flexbox properties support
-- Minor error handling fixes
+2016-07-12 - Version 4.12
+- Fix decoding CSS lengths with no unit
+- Thin line drawing fix
 
-Version 2.1 - Dec 21, 2016
-- API extensions: allow custom declaration transformers
-- Pseudo element processing fix
+2016-03-11 - Version 4.11
+- transform: support for basic 2D transformations
+- Table cell and floating block height computation fixes
+- Image size computation fixes
+- background-size property support
+- Data url processing fixes
+- Positioned element rendering fixed (avoid duplicates)
+- Containing block computation according to CSS specs
 
-Version 2.0 - Sep 7, 2016
-- New ANTLR4 based parser
-- Significant error recovery improvements
+2015-11-05 - Version 4.10
+- Size computation fixes for replaced images
+- New image decoding based in ImageIO instead of Toolkit
+- Background rendering fixes
+- Fixed handling max-width:none and max-height:none
+- Static position computation fixed
 
-Version 1.23 - Jul 8, 2016
-- @charset processing fix
-- Minor fixes in media query matching
+2015-05-20 - Version 4.9
+- Image transparency fix for SVG and PDF renderer
+- Support for treating HTML images as their ALT text only
+- Box tree creation fixes (anonymous blocks)
 
-Version 1.22 - Jan 28, 2016
-- A generic ElementMatcher mechanism for implementing alternative ways
-  of selector to element matching
-- Ready to use element matchers for XHTML, HTML-standard and HTML-quirks mode
-- New 'transform' and 'transform-origin' properties supported
-- Property inheritance fixes
-- Avoid negative zeroes in CSS floating point values
-- Style sheet @import fixed
+2015-02-11 - Version 4.8
+- Updates to new jStyleParser API (NetworkProcessor support)
+- Fixed inline-block background rendering (affected form rendering)
+- Background position computation with efficient margins
+- Margins of the root element's box do not collapse (fixes #53)
+- DOM binding updates (allow null atribute values and missing body element)
+- Demo updates
 
-Version 1.21 - Nov 5, 2015
-- Significant grammar extensibility improvements
-- CSS escaping properly supported
-- Pseudo-selector processing optimizations
-- ID selector matching fixes
-- Several new properties supported (tab-size, overflow-x/y)
-- Text output formatting fixes
+2014-08-29 - Version 4.7
+- Viewport size: the viewport size and the total canvas size is now properly distinguisged
+- Box height computation fixes (including percentage heights)
+- Fixed drawing backgrounds and borders of floating blocks
+- Table rendering fixes
+- Negative margin computation fix
+- Support CSS overflow in SVG renderer
 
-Version 1.20 - Jan 13, 2015
-- API change: use parseString(String, URL) instead of parse(String)
-- More efficient and stateles rule sorting (removes PriorityStrategy mechanism)
-- Custom NetworkProcessor mechanism for handling URL resources
-- Fix exceptions during dimension value creation
-- Fix exceptions in malformed index selectors
-- basic background-size support
+2014-07-15 - Version 4.6
+- Support for rendering on different output media (media query support)
+- New CSS3 length units supported: rem, ch, vw, vh, vmin, vmax
+- Basic layout of the position: fixed elements
+- Image loading and rendering fixes  
 
-Version 1.19 - Nov 6, 2014
-- Allow element.getAttribute() to return null for supporting more DOM parsers
-- Line height processing fix
-- background-position processing fix
-- Attribute selector matching fix (whitespace processing)
-- Allow unary + in numeric values
-- Several DirectAnalyzer fixes
-- Properly unescape CSS strings (using unbescape)
-- Support for MatchCondition at DOMAnalyzer level
-- Distinguish pseudo classes (:) and pseudo elements (::) according to CSS3 Selectors
-- Error recovery revision
-- Many new test cases mainly for the reported bugs
+2014-02-05 - Version 4.5
+- Margin for empty boxes fixed
+- Negative top margins fixed
+- DocumentSource implements java.io.Closeable
 
-Version 1.18 - Aug 28, 2014
-- New CSS3 pseudo classes support
-- Fix background-attachment and font-variant bugs
-- Matching empty media queries in MediaSpec
-- Property inheritance fixes
-- Error recovery fixes (unknown at-rules)
+2014-01-10 - Version 4.4
+- Conversion to maven
 
-Version 1.17 - Jul 11, 2014
-- Media queries supported in parser and DOMAnalyzer
-- API extensions for Media queries
-- Extended API for configuring the automatic processing of imported style sheets 
-- New CSS3 units supported (ch, rem, vw, vh, vmin, vmax, in, turn,
-    dpi, dpcm, dppx)
+2013-12-05 - Version 4.3
+- Basic support for rendering form fields using CSS (closes #37)
+- vertical-align support for tables (closes #21)
+- text-indent support
+- clip support
+- Support for attr() function in content CSS property
+- Logback framework used for logging (closes #25)
+- Replaced box size computation fixes
+- Static position computation reworked
+- Table layout fixes (closes #34)
+- Better API for font sizes (closes #35)
 
-Version 1.16 - Feb 4, 2014
-- Rule priority computation fix for nested (@media) rules
+2013-05-25 - Version 4.2
+- Drawing text decorations (underline and line-through) (closes #12)
+- z-index and stacking context support
+- text-transform support 
+- Positioned boxes in viewport fixed (closes #11)
+- Do not load HTML objects when data URL is not specified (closes #15)
+- Table layout computation fix (closes #18)
+- Custom default font configuration
+- List item marker drawing fixes
 
-Version 1.15 - Jan 9, 2014
-- Project layout changed to maven
-- Rewritten test resource reading
-- clip: property changed to correspond the specification
-- Base URL processing improved
-- Error recovery fixes
+2013-01-22 - Version 4.1
+- New I/O framework and connetcion handling API (see the manual)
+- Support for data: URLs
+- Embedded object support
+- Optimized image loading
+- Default charset detection for referenced style sheets
+- HTML <base> tag support in CSS analyzer
+- Relative positioning not limited to block elements
+- Canvas size computation fixes
+- Fix inline positioning around floating boxes
+- Fixed behavior of replaced boxes in table cells
+- Replaced box size computation fixes (percentage widths and heights)
+- Border drawing fix (null pointer with 0-width or 0-height boxes)
+- Table cell position computation and footer rendering fix
+- Table row organization fix (closes #3545215)
+- Fixed floating box position inside of relatively positioned boxes
+- Whitespace processing fixes
+- Anchor handling
 
-Version 1.14 - Oct 26, 2013
-- Pseudo class processing during DOM style computation
-- Declaration source tracking
-- Inheritance processing fixes
-- Media matching improved
-- Defalut values of height property fixed
-- Direct analyzer updates
+2012-06-18 - Version 4.0
+- Background image support
+- Reworked configuration API (static configuration removed)
+- Minor bugfixes
 
-Version 1.13 - May 25, 2013
-- Empty <style> tag parsing fix (fixes #18)
-- Fixed the 'trasparent' typo (fixes #16)
+2012-06-08 - Version 3.5
+- Improved performance (faster style computation, less rendering phases)
+- Support for style sheet origin specification (for priority computation)
+- White-space property support (including 'pre' and 'nowrap' modes)
+- Viewport and block width computation fixes
+- Fixed processing of the presentational HTML attributes (mainly for tables)
+- Line alignment bugfixes
 
-Version 1.12 - Mar 27, 2013
-- New CSS3 support
-- @font-face, @page and @viewport rules supported
-- CSS3 structured selectors supported
-- CSS3 pseudo classes
-- CSS3 colors and opacity support
-- border-radius parsing
-- Allow lengths with no units (fixes #9)
-- Whitespace processing fix in attribute selectors
-- Error recovery fixes
+2011-12-06 - Version 3.4
+- Support for display:inline-block layout
+- Vertical alignment fixed for the "top" and "bottom" values
+- Whitespace processing fixes
+- API extension for accessing list properties
+- Block width computation fixes
+- Image loading improvements
 
-Version 1.11 - Jan 21, 2013
-- Class matching fix
-- Allow empty url() values
-- Allow no terms in property declarations
-- Error recovery improvements
+2011-06-09 - Version 3.3
+- Fixes in table column width computation
+- Table background color computation adjusted
 
-Version 1.10 - Jan 14, 2013
-- A background-position assignment fix in DOM analyzer
+2011-02-08 - Version 3.2
+- Improvements and fixes in the DOM structure analysis
+- Fixed static position determination for absolutely positioned boxes
+- Small documentation updates
 
-Version 1.9 - Nov 22, 2012
-- A fallback TreeWalker implementation is used when Traversal is not supported by the DOM implementation
-- Support for data: URLs in DOM analyzer
-- Fixed using default values when some variated property value is missing
+2011-01-24 - Version 3.1
+- table layout algorithm fixes
+- line height computation reworked
+- vertical alignment reworked
+- new box tree creation algorithm
+- whitespace processing improvements
+- border rendering reworked
+- static position determination fixed
 
-Version 1.8 - Sep 14, 2012
-- Style sheet charset specification support
-- @charset rule support
-- Base URL propagation for URI terms
-- Extended attribute selector support
-- Better extensibility through custom DeclarationTransformer
+2009-12-03 - Version 3.0
+- new margin collapsing algorithm
+- removed the jTidy dependency. Now, any DOM Traversal capable DOM implementation may be used.
+- visibility inheritance fixed
+- font-weight processing updated
+- license change to LGPLv3
 
-Version 1.7 - Jun 8, 2012
-- Significant performance improvements
-- New DirectAnalyzer interface for direct element style computation
+2009-03-04 - Version 2.2
+- New ImageRenderer tools that stores the rendered document in PNG or SVG
+- New box clipping implementation (overflow: hidden)
+- Box width computation fixes
+- Layout fixes for absolutely positioned elements
+- New ReplaceBox interface for joining the inline and block ones
 
-Version 1.6 - Jun 4, 2012
-- Obtaining gzipped style sheets linked from DOM
-- Support for multiple style sheets in DOM assignment
-- Style sheet origin support
-- Source stylesheet tracking in declarations (for stylesheet priority tracking)
-- Support for per-element default style definition in the DOM tree using the proprietary XDefaultStyle attribute.
-- Fixed base URI for nested imports
-- Value type discovery fix
+2009-01-29 - Version 2.1
+- Box size computation fixes (absolutely positioned boxes)
+- Floating block positioning fixes
+- Other small bugfixes
 
-Version 1.5 - Nov 23, 2011
-- Error recovery fixes
-- Fixed pseudo-class name processing (double colon support)
-- Fixed at-keyword name processing (leading dash)
-- Small API update for allowing better extensibility (by Ron)
+2008-12-22 - Version 2.0
+CSSBox 2.0 introduces a brand new CSS parser - jStyleParser.
+This parser is much more efficient and reliable than the
+previous 'naive' parser based on the CSS Parser project.
 
-Version 1.4 - May 5, 2011
-- Pseudo-elements and pseudo-classes supported.
-- Many error recovery fixes. Nasty CSS hacks should be parsed as well.
-- Fixes in property inheritance and parsing
+Most Important Changes in the CSSBox API
+----------------------------------------
 
-Version 1.3 - Dec 3, 2009
-- removed the jTidy dependency. Now any DOM Traversar capable DOM
-  implementation may be used
-- license changed to LGPLv3
-
-Version 1.2 - Jul 23, 2009
-
-
-Version 1.1 - Mar 02, 2009
-- any contents in expression() supported
-- correct handling of various CSS hacks
-- vendor-specific properties supported
-
-Version 1.0 - Dec 11, 2008 - First public release
+- if the DOMAnalyzer.attributesToStyles() method is used for
+  interpreting HTML visual attributes, it must be called 
+  BEFORE calling the DOMAnalyzer.getStyleSheets() method 
