@@ -1,21 +1,37 @@
-CSSBox
-======
+[![Build Status](https://secure.travis-ci.org/Appendium/objectlabkit.png?branch=master)](http://travis-ci.org/Appendium/objectlabkit) 
+[![SonarQube](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=bugs)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
+[![SonarQube Reliability](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=reliability_rating)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
+[![SonarQube Security](https://sonarcloud.io/api/project_badges/measure?project=net.objectlab.kit:kit-parent&metric=security_rating)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
+![GitHub license](https://img.shields.io/github/license/appendium/objectlabkit.svg?style=flat-square)
 
-[![Build Status](https://travis-ci.org/radkovo/CSSBox.svg?branch=master)](https://travis-ci.org/radkovo/CSSBox)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.sf.cssbox/cssbox/badge.png)](https://maven-badges.herokuapp.com/maven-central/net.sf.cssbox/cssbox)
+Date Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/datecalc-common)
+FX Calc: [![Maven Central DateCalculator](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-fxcalc/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-fxcalc)
+Utils: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils)
+Utils Excel: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-excel)
 
-An HTML/CSS rendering engine library
-(c) 2005-2021 Radek Burget (burgetr@fit.vutbr.cz)
+Utils Report: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-report/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-utils-report)
+UCITS Portfolio: [![Maven Central Utils](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-portfolio/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.objectlab.kit/objectlab-portfolio)
 
-See the project page for more information and downloads:
-[http://cssbox.sourceforge.net/](http://cssbox.sourceforge.net/)
+ [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=net.objectlab.kit:kit-parent)](https://sonarcloud.io/dashboard/index/net.objectlab.kit:kit-parent) 
 
-All the source code of the CSSBox itself is licensed under the GNU Lesser General
-Public License (LGPL), version 3. A copy of the LGPL can be found 
-in the LICENSE file.
+ObjectLab Kit
+=============
 
-CSSBox relies on the jStyleParser open source CSS parser 
-[http://cssbox.sourceforge.net/jstyleparser](http://cssbox.sourceforge.net/jstyleparser).
+* Date Calculators (including new Currency Date Calculators for FX/Foreign Exchange), split in 3 jars:
+  * for JDK < 1.8
+  * for JDK 1.8 using LocalDate
+  * for JODA using Joda LocalDate
+* FX Rate Calculators (including Cross currencies calculations and MonetaryAmount), requires JDK8
+* Utils: set of utilities like Pair, Triplet, Total and BigDecimal that can handle nulls! requires JDK8
+* Utils Excel: set of convenient classes to create an Excel Spreadsheet via POI easily.
 
-The CSSBox library is under development and its API or functionality may change in future versions.
-See the CHANGELOG for the most important changes to the previous versions.
+LINKS
+=====
+
+* [ObjectLab Kit site](http://objectlabkit.sf.net)
+* [SonarQube](http://nemo.sonarsource.org/project/index/net.objectlab.kit:kit-parent)
+* [Metrics at OpenHub](https://www.openhub.net/p/objectlabkit)
+* Thank you to [YourKit](http://www.yourkit.com) for the OSS Licence
+
+
+![Brought to you by](http://objectlabkit.sourceforge.net/images/appendium_logo.jpg "Supported by Appendium") and ![Supported by ObjectLab](http://objectlabkit.sourceforge.net/images/objectlab_logo.jpg "Supported by ObjectLab")
