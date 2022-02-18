@@ -1,13 +1,13 @@
+### Eclipse
 .classpath
 .project
 .settings/
-.idea
 
+### Maven
+target/
+
+### JetBrains
 *.iml
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-/target
+*.ipr
+*.iws
+/.idea/

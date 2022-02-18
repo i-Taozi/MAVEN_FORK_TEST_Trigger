@@ -1,85 +1,75 @@
-valid4j
-=======
+# Duke
 
-[![Build Status](https://travis-ci.org/valid4j/valid4j.png)](https://travis-ci.org/valid4j/valid4j)
-[![Coverage Status](https://coveralls.io/repos/valid4j/valid4j/badge.png?branch=master&service=github)](https://coveralls.io/github/valid4j/valid4j?branch=master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.valid4j/valid4j/badge.png)](https://maven-badges.herokuapp.com/maven-central/org.valid4j/valid4j)
+Duke is a fast and flexible deduplication (or entity resolution, or
+record linkage) engine written in Java on top of Lucene.  The latest
+version is 1.2 (see [ReleaseNotes](https://github.com/larsga/Duke/wiki/ReleaseNotes)).
 
-A simple assertion and validation library for Java which makes it possible to use your
-favorite [hamcrest-matchers](http://hamcrest.org/JavaHamcrest/) to 
-express pre- and post-conditions in your code. Use the global default 
-policy to signal logical violations in your code or optionally specify 
-your own handling.
+Duke can find duplicate customer records, or other kinds of records in
+your database. Or you can use it to connect records in one data set
+with other records representing the same thing in another data set.
+Duke has sophisticated comparators that can handle spelling
+differences, numbers, geopositions, and more. Using a probabilistic
+model Duke can handle noisy data with good accuracy.
 
-Full documentation is available at [www.valid4j.org](http://www.valid4j.org).
+Features
 
-This library is available at [Maven Central Repository](http://search.maven.org/).
-Add this dependency to your `pom.xml`
+  * High performance.
+  * Highly configurable.
+  * Support for [CSV, JDBC, SPARQL, NTriples, and JSON](https://github.com/larsga/Duke/wiki/DataSources).
+  * Many built-in [comparators](https://github.com/larsga/Duke/wiki/Comparator).
+  * Plug in your own data sources, comparators, and [cleaners](https://github.com/larsga/Duke/wiki/Cleaner).
+  * [Genetic algorithm](https://github.com/larsga/Duke/wiki/GeneticAlgorithm) for automatically tuning configurations.
+  * Command-line client for getting started.
+  * [API](https://github.com/larsga/Duke/wiki/UsingTheAPI) for embedding into any kind of application.
+  * Support for batch processing and continuous processing.
+  * Can maintain database of links found via JNDI/JDBC.
+  * Can run in multiple threads.
 
-    <dependency>
-      <groupId>org.valid4j</groupId>
-      <artifactId>valid4j</artifactId>
-      <version>0.5.0</version>
-    </dependency>
+The [GettingStarted page](https://github.com/larsga/Duke/wiki/GettingStarted) explains how to get started and has links to
+further documentation. The [examples of use](https://github.com/larsga/Duke/wiki/ExamplesOfUse) page
+lists real examples of using Duke, complete with data and
+configurations. [This
+presentation](http://www.slideshare.net/larsga/linking-data-without-common-identifiers)
+has more of the big picture and background.
 
-### Design-by-contract (assertions)
+Contributions, whether issue reports or patches, are very much
+welcome.  Please fork the repository and make pull requests.
 
-Statically import the library entry point:
+Supports Java 1.7 and 1.8.
 
-    import static org.valid4j.Assertive.*;
+[![Build status](https://travis-ci.org/larsga/Duke.png?branch=master)](https://travis-ci.org/larsga/Duke)
 
-Use assertive preconditions to check for programming errors in calling clients:
+If you have questions or problems, please register an issue in the
+issue tracker, or post to the [the mailing
+list](http://groups.google.com/group/duke-dedup). If you don't want to
+join the list you can always write to me at `larsga [a]
+garshol.priv.no`, too.
 
-    // Express your preconditions using plain boolean expressions, with a helpful error message (optional)
-    require(v > 0.0, "The value (%f) must be positive", v);
-    
-    // Or use hamcrest-matchers
-    require(v, containsString("great!"));
-    
-Use assertive postconditions to check for programming errors in your supplied code:
+## Using Duke with Maven
 
-    ensure(result != null);
-    ensure(result, greaterThan(3.0));
-    
-Make use of the convenient pass-through of valid objects:
+Duke is hosted in Maven Central, so if you want to use Duke it's as
+easy as including the following in your pom file:
 
-    // Initialize members with valid arguments
-    this.member = require(argument, notNullValue());
+```
+<dependency>
+  <groupId>no.priv.garshol.duke</groupId>
+  <artifactId>duke</artifactId>
+  <version>1.2</version>
+</dependency>
+```
 
-    // Return valid results
-    return ensure(result, notNullValue());
+## Building the source
 
-Contract violations will contain a descriptive error message:
+If you have [Maven](https://maven.apache.org/) installed, this is as
+easy as giving the command `mvn package` in the root directory. This
+will produce a `.jar` file in the `target/` subdirectory of each
+module.
 
-    // E.g this contract
-    require("This message is bad", containsString("good"));
-    
-    // Will yield this error
-    org.valid4j.exceptions.RequireViolation: expected: a string containing "good"
-     but: was "This message is bad"
+## Older documentation
 
-### Validation (e.g. input validation)
-
-Statically import the library entry point:
-
-    import static org.valid4j.Validation.*;
-
-Use expressive hamcrest-matchers to validate input
-
-    validate(argument, isValid(), otherwiseThrowing(InvalidException.class));
-
-Make use of the convenient pass-through of valid objects:
-
-    // Initialize members with valid arguments
-    this.member = validate(arg, isValid(), otherwiseThrowing(InvalidException.class));
-
-Failed validations will contain a descriptive message:
-
-    // E.g this validation
-    validate("This message is bad", containsString("good"), IllegalArgumentException.class);
-    
-    // Will yield this exception with message
-    // (NOTE: Exception class must accept one String argument in constructor for this feature to be supported)
-    java.lang.IllegalArgumentException: expected: a string containing "good"
-     but: was "This message is bad"
-     
+[This blog post](http://www.garshol.priv.no/blog/217.html) describes
+the basic approach taken to match records. It does not deal with the
+Lucene-based lookup, but describes an early, slow O(n^2)
+prototype. [This early
+presentation](http://www.slideshare.net/larsga/deduplication)
+describes the ideas behind the engine and the intended architecture
