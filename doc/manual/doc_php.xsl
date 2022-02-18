@@ -11,8 +11,8 @@
  
 	<xsl:template match="doc:document">
 		<xsl:text disable-output-escaping="yes">&lt;?</xsl:text>
-		require "include/page.php";
-		make_header("documentation", "Manual", "./", "@import \"manual.css\";");
+		require "../include/page.php";
+		make_header("documentation", "Manual", "../", "@import \"manual.css\";");
 		<xsl:text disable-output-escaping="yes">?&gt;</xsl:text>
 		<h1><xsl:apply-templates select="doc:title" /></h1>
 		<p class="author">
@@ -109,7 +109,7 @@
     <xsl:template match="doc:api">
     	<a>
     		<xsl:attribute name="href">
-    			<xsl:text>api/</xsl:text>
+    			<xsl:text>../api/</xsl:text>
     			<xsl:choose>
     				<xsl:when test="string-length(@class)>0">
 		    			<xsl:value-of select="@class" />
@@ -125,9 +125,7 @@
     			</xsl:if>
     		</xsl:attribute>
     		<xsl:attribute name="class">api</xsl:attribute>
-    		<code>
-    			<xsl:apply-templates />
-    		</code>
+    		<xsl:apply-templates />
     	</a>
     </xsl:template>
     
