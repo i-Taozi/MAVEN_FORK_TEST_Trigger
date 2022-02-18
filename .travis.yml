@@ -1,14 +1,10 @@
 language: java
+
 jdk:
-  - openjdk8
-cache:
-  directories:
-    - $HOME/.m2
-sudo: false
-install: "mvn clean cobertura:cobertura -Dmaven.javadoc.skip=true test"
+  - openjdk6
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+branches:
+  only:
+    - master
 
-after_failure:
-  - echo "build failed!"
+script: "mvn -e clean install license:add-third-party"
